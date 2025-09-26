@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-background text-text;
+}
+
+/* Custom styles for react-select */
+.react-select__control {
+  @apply !bg-surface !border-border !rounded-lg !shadow-none !min-h-[48px];
+}
+.react-select__control--is-focused {
+  @apply !border-primary !ring-1 !ring-primary;
+}
+.react-select__single-value {
+  @apply !text-text;
+}
+.react-select__placeholder {
+  @apply !text-textSecondary;
+}
+.react-select__indicator-separator {
+  @apply !bg-border;
+}
+.react-select__indicator {
+  @apply !text-textSecondary;
+}
+.react-select__menu {
+  @apply !bg-surface !border-border !rounded-lg !shadow-custom-dark;
+}
+.react-select__option {
+  @apply !bg-surface !text-text !cursor-pointer;
+}
+.react-select__option--is-focused {
+  @apply !bg-primary/20;
+}
+.react-select__option--is-selected {
+  @apply !bg-primary !text-white;
+}
+.react-select__input-container {
+  @apply !text-text;
+}
