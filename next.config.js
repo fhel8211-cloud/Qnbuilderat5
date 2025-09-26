@@ -3,6 +3,9 @@ const nextConfig = {
   // Disable SWC and use Babel instead for WebContainer compatibility
   swcMinify: false,
   compiler: {
+    removeConsole: false,
+  },
+  compiler: {
     // Disable SWC compiler
     removeConsole: false,
   },
@@ -19,6 +22,12 @@ const nextConfig = {
     forceSwcTransforms: false,
     cpus: 1,
     workerThreads: false,
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      path: false,
+    };
+    forceSwcTransforms: false,
   }
 };
 
