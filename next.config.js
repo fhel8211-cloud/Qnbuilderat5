@@ -1,0 +1,29 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Disable SWC and use Babel instead for WebContainer compatibility
+  swcMinify: false,
+  compiler: {
+    // Disable SWC compiler
+    removeConsole: false,
+  },
+  // Use Babel for transpilation
+  experimental: {
+    forceSwcTransforms: false,
+  },
+  // Optimize for WebContainer environment
+  webpack: (config, { dev, isServer }) => {
+    // Disable webpack cache in development to avoid worker issues
+    if (dev) {
+      config.cache = false;
+    }
+    return config;
+  },
+  // Reduce build parallelism to avoid Jest worker issues
+  experimental: {
+    ...nextConfig?.experimental,
+    cpus: 1,
+    workerThreads: false,
+  }
+};
+
+module.exports = nextConfig;
