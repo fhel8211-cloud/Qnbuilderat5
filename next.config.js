@@ -6,10 +6,6 @@ const nextConfig = {
     // Disable SWC compiler
     removeConsole: false,
   },
-  // Use Babel for transpilation
-  experimental: {
-    forceSwcTransforms: false,
-  },
   // Optimize for WebContainer environment
   webpack: (config, { dev, isServer }) => {
     // Disable webpack cache in development to avoid worker issues
@@ -20,7 +16,7 @@ const nextConfig = {
   },
   // Reduce build parallelism to avoid Jest worker issues
   experimental: {
-    ...nextConfig?.experimental,
+    forceSwcTransforms: false,
     cpus: 1,
     workerThreads: false,
   }
